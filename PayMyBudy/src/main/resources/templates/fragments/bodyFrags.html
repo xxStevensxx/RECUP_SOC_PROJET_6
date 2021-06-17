@@ -1,0 +1,251 @@
+<!-- Navbar  -->
+<nav th:fragment="navbarfragment" class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+  <h1 id=pmBudy1>Pay My Budy</h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transfert">Transfer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+           <li class="nav-item">
+          <a  class="nav-link" th:if="${session.Email == null}" th:href="@{/login}">LogIn</a>
+          <a  class="nav-link" th:if="${session.Email != null}" th:href="@{/logout}">LogOut</a>
+        </li>
+       <!--  <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Secondary Navbar  -->
+<nav th:fragment="breadcrumbfragment" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  </ol>      
+</nav>
+
+
+
+<!-- Session info User  -->
+<div th:fragment="sessionfragment">
+<div class="alert alert-primary" role="alert" th:if="${session.Email != null}">Vous etes connecté en tant que: <span class="fw-bold" th:text=${session.Email}></span></div>
+<div class="alert alert-warning" role="alert" th:if="${session.Email != null && session.FirstName == null}">Pensez à renseigner vos infos personnels</div>
+</div>
+
+
+<!-- Home -->
+<div class="container" th:fragment="homefragment">
+<figure>
+	<img src="/assets/payMyBudy.png" class="img-fluid" alt="homePagePng">
+</figure>
+</div>
+
+
+<!-- Sign-Up  -->
+<form th:fragment="signupfragment" th:action="@{/signUp}" th:object="${FormSignUp}" method="post">
+<div class="container">
+<div class="formBox">
+<div>
+<h2 id="pmBudy2">Pay My Budy</h2>
+</div>
+<div id="email" class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input oninput="this.value = this.value.toLowerCase()" th:field="*{email}" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+   <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+      <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('global')}" th:each="err : ${#fields.errors('global')}" th:text="${err}"></div>
+	</div>
+  <div id="psw" class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input th:field="*{password}" type="password" class="form-control" id="exampleInputPassword1">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+  </div>
+<div class="btn-container">
+    <button class="btn btn-primary" type="submit">Login</button>
+</div>
+  </div>
+</div>
+</form>
+
+
+
+<!-- Login  -->
+<form th:fragment="loginfragment" th:action="@{/login}" th:object="${FormLogin}" method="post">
+<div class="container">
+<div class="formBox">
+<div>
+<h2 id="pmBudy2">Pay My Budy</h2>
+</div>
+<div id="email" class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input oninput="this.value = this.value.toLowerCase()" th:field="*{email}" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+   <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+</div>
+  <div id="psw" class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input th:field="*{password}" type="password" class="form-control" id="exampleInputPassword1">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+  </div>
+       <div align="center"  class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('global')}" th:each="err : ${#fields.errors('global')}" th:text="${err}"></div>  
+  <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">Remember me</label>
+</div>
+<div class="btn-container">
+    <button class="btn btn-primary" type="submit">Login</button>
+</div>
+    <div>
+    	<p class="fw-bold">New on pay My budy ? </p>
+          <a class="nav-link" href="/signUp">Sign-Up</a>
+    </div>
+  </div>
+</div>
+</form>
+
+    
+
+<!-- Login Succes -->
+<div class="container" th:fragment="loginsuccesfragment">
+	<div id="loginSucces"  align="center">
+	<div class="alert alert-success" role="alert">Connexion success ! bienvenue:   <span class="fw-bold" th:text=${session.Email}></span> </div>
+		<div class="alert alert-info" role="alert">Pensez à ajouter vos infos dans votre profil</div>
+<!--<span>Password:</span><span th:text=${userForm.password}></span><br/> -->
+	</div>
+</div>
+
+
+<!-- Logout Succes -->
+<div class="container" th:fragment="logoutsuccesfragment">
+	<div id="logoutSuccess"  align="center">
+	<div class="alert alert-success" role="alert">Vous etes déconnecté </div>
+	</div>
+</div>
+
+<!-- Contact  -->
+<div th:fragment="contactfragment" th:object="${Connections}" class="container">
+<table class="table table-striped">
+  <caption>Connections</caption>
+  <thead class="thead">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="Connection, state : ${Connections}">
+      <th scope="row" th:text="${state.count}">number</th>
+      <td th:text="Connection"></td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+<!--     <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr> -->
+  </tbody>
+</table>
+</div>
+
+<!-- Transfert  -->
+<div th:fragment="transfertfragment" class="container">
+
+<div class="row" id="block1">
+	<div id="sendMoney" class="col-sm">
+		<p>Send Money</p>
+	</div>
+	<div id="addCon" class="col-sm">
+    	<button class="btn btn-primary" type="button">Add Connection</button>	
+	</div>
+</div>
+
+<div class="row" id="block2">
+	<div class="col-sm">
+		<select class="form-select" aria-label="Default select example">
+		  <option selected>Select A Connection</option>
+		  <option value="1">One</option>
+		  <option value="2">Two</option>
+		  <option value="3">Three</option>
+		</select>
+	</div>
+	<div class="col-sm">
+		  <input type="number" class="form-control" id="formGroupExampleInput" placeholder="0$">
+	</div>
+	<div class="col-sm">
+		<button id="pay" type="button" class="btn btn-primary">Pay</button>
+	</div>
+</div>
+
+<div>
+	<p>My Transactions</p>
+</div>
+<table class="table table-striped">
+  <thead class="thead">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Connections</th>
+      <th scope="col">Description</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+
+</div>
+

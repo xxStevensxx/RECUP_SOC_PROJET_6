@@ -1,0 +1,114 @@
+
+.text-center.text-white {
+	width: 100%; position : absolute !important;
+	bottom: 0 !important;
+	position: absolute !important;
+}
+
+.breadcrumb{
+	margin-bottom: 5% !important;
+}
+
+#pmBudy1 {
+	position: relative !important;
+	right: 1%;
+	border: none !important;
+	background-color: #89C34B;
+	color: white;
+	text-align: center;
+	font-size: 1em !important;
+	padding: 1%;
+	width: 10%;
+	border-radius: 10px 10px 10px 10px !important;
+}
+
+.formBox {
+	border-style: solid;
+	border-width: 2px !important;
+	border-color: #BEBEBE !important;
+	border-radius: 25px 25px 25px 25px !important;
+	padding: 5%;
+}
+
+#pmBudy2 {
+	background-color: #89C34B;
+	color: white;
+	text-align: center;
+	font-size: 1em !important;
+	padding: 2%;
+	width: 15%;
+	margin: 0 auto;
+	border-radius: 10px 10px 10px 10px !important;
+}
+
+#email {
+	margin: 0 auto;
+	width: 50%;
+}
+
+#psw {
+	margin: 0 auto;
+	width: 50%;
+}
+
+.form-check {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.btn-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
+}
+
+.table.table-striped{
+	
+	border-style: solid;
+	border-width: 2px !important;
+	border-color: #BEBEBE !important;
+	
+}
+
+.thead{
+	background-color: #89C34B !important;
+	color: white;
+	
+}
+
+#sendMoney p{
+position: relative;
+	right: 40%;
+	}
+
+
+
+#addCon button{
+	position: relative;
+	left: 35%;
+	width : 35%;
+	padding: 1%;
+}
+
+
+
+#block2{
+	padding : 2%;
+	background-color: #F5F5F5 !important;
+	margin-bottom: 3%;
+}
+
+
+.col-sm{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto !important;
+}
+
+#pay{
+	border : none;
+	background-color: #89C34B;
+	width: 60%;
+}

@@ -3,6 +3,7 @@ package com.pay.my.budy.config;
 public class Params {
 	
 	//STUFF ABOUT BDD
+	public final static String DRIVERNAME = "com.mysql.cj.jdbc.Driver";
 	public final static String URL = "jdbc:mysql://localhost:3306/paymybudy";
 	public final static String USER = "root";
 	public final static String PASSWORD = "rootroot";
@@ -14,12 +15,16 @@ public class Params {
 
 	
 	//HIBERNATE CONFIG
-	public final static String HIBERNATECONFIG =  "hibernate.cfg.xml";
-	public final static String HIBERNATECONFIGTEST =  "hibernate.cfg.test.xml";
+	public final static String HIBERNATECONFIG = "hibernate.cfg.xml";
+	public final static String HIBERNATECONFIGTEST = "hibernate.cfg.test.xml";
 
 	
 	//SCRIPT SQL
 	public final static String SCRIPTSQL = "script.sql";
+	
+	
+	//PACKAGE TO SCAN
+	public final static String PCKGTOSCAN = "com.pay.my.budy.model";
 	
 	
 

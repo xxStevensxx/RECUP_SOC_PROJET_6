@@ -1,23 +1,20 @@
 package com.pay.my.budy.repository;
 
-import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.pay.my.budy.model.User;
 
-public interface UserRepository {
 
-	void create(User user);
-
-	User getById(int id);
-
-	User getByName(String name);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
 	
-	User getByEmail(String email);
-	
-	ArrayList<User> getAll();
-	
-	void save(User user);
 
-	void delete(User user);
+	@Query(value = "SELECT u FROM Users u WHERE u.username = ?1", nativeQuery = true)
+	Optional<User> findUserWithName(String userName);
+	
 
 }

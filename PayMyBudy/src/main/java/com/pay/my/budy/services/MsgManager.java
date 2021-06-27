@@ -26,7 +26,7 @@ public class MsgManager {
 			return "Adresse email invalide !";
 			
 		case 6:
-			return "Adresse email existante !!";
+			return "Utilisateur non trouvé !";
 			
 		case 7:
 			return "Email ou mot de passe incorrect !!";

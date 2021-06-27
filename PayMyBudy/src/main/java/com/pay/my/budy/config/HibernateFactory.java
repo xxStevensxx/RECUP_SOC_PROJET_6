@@ -1,14 +1,15 @@
 package com.pay.my.budy.config;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
+import com.pay.my.budy.model.Relationships;
 import com.pay.my.budy.model.User;
 
 @Component
@@ -24,7 +25,7 @@ public class HibernateFactory {
 
 		try {
 			// Create object
-			Set<Integer> friend = new HashSet<Integer>();
+			List<Relationships> friend = new ArrayList<Relationships>();
 			User tempUser = new User("stevens", "Tavares", LocalDate.now(), "Tattoine", "jedi@star.fr", "abcd1234", friend , 35.5);
 
 			// start transaction

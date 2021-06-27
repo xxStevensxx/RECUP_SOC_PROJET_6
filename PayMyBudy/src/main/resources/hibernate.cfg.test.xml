@@ -34,7 +34,7 @@
 
 		<!-- Names the annotated entity class -->
 		<mapping class="com.pay.my.budy.model.User" />
-		<mapping class="com.pay.my.budy.model.Friends" />
+		<mapping class="com.pay.my.budy.model.Relationships" />
 		
 
 	</session-factory>

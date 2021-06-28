@@ -50,7 +50,7 @@ public class MainController {
 	}
 
 	@GetMapping(value = "/login")
-	public String loginController() {
+	public String loginController(@ModelAttribute("FormLogin") User user, BindingResult result) {
 
 		return "/layouts/login";
 

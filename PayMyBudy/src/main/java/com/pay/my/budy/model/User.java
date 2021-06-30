@@ -2,22 +2,18 @@ package com.pay.my.budy.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-<<<<<<< Updated upstream
-=======
+
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
->>>>>>> Stashed changes
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -25,7 +21,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.springframework.stereotype.Component;
-import com.sun.istack.NotNull;
 
 @Component
 @Entity
@@ -36,7 +31,7 @@ public class User {
 	public User() {}
 	
 	public User(String firstname, String name, LocalDate birthdate, String address, String email,
-			String password, Set<Integer> friends, double moneyAvailable) {
+			String password, List<Relationships> friends, double moneyAvailable) {
 		this.firstName = firstname;
 		this.name = name;
 		this.birthDate = birthdate;
@@ -44,78 +39,42 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.friends = friends;
-		this.moneyAvailable = moneyAvailable;
 	}
 	
-	@Id
-<<<<<<< Updated upstream
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="idUser")
-	private long id;
 
-//	@NotNull
-//	@NotBlank(message = "FirstName can't be blank")
-//	@Size(min = 2, max = 20, message = "Firstname must be between 2 and 20 caracteres")
-	@Column(name="firstName")
-	private String firstName;
-	
-//	@NotNull
-//	@NotBlank(message = "Name can't be blank")
-//	@Size(min = 2, max = 20, message = "Firstname must be between 2 and 20 caracteres")
-=======
+  @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 
-
 	@Column(name="firstname")
 	private String firstName;
 	
->>>>>>> Stashed changes
 	@Column(name="name")
 	private String name;
 	
-//	@NotBlank(message = "Name can't be blank")
 	@Column(name="birthdate")
 	private LocalDate birthDate;
 	
 	@Column(name="address")
 	private String address;
 	
-<<<<<<< Updated upstream
-	@NotNull
-	@Email(message = "invalid email")
-	@NotBlank(message = "Email can't be blank")
-=======
 	@Email
->>>>>>> Stashed changes
 	@Column(name="email")
 	private String email;
 	
-	@NotNull
-//	@NotBlank(message = "Password can't be blank")
+
 	@Size(min = 2, max = 350, message = "Password must be between 2 and * caracteres")
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="moneyavailable")
-	private double moneyAvailable;
-	
-<<<<<<< Updated upstream
-	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Friends.class)
-	@JoinColumn(name = "idUser")
-	private Set<Integer> friends = new HashSet<Integer>();
-=======
 	@OneToMany(cascade = CascadeType.ALL, 
 							orphanRemoval = true,
 							fetch = FetchType.EAGER,
 							targetEntity = Relationships.class)
 	@JoinColumn(name = "friend")
 	private List<Relationships> friends = new ArrayList<Relationships>();
->>>>>>> Stashed changes
 
-	
 	public long getId() {
 		return id;
 	}
@@ -172,21 +131,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Set<Integer> getFriends() {
+	public List<Relationships> getFriends() {
 		return friends;
 	}
 
-	public void setFriends(Set<Integer> friends) {
+	public void setFriends(List<Relationships> friends) {
 		this.friends = friends;
 	}
-
-	public double getMoneyAvailable() {
-		return moneyAvailable;
-	}
-
-	public void setMoneyAvailable(double moneyAvailable) {
-		this.moneyAvailable = moneyAvailable;
-	}
-
 
 }

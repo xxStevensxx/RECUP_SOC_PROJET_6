@@ -29,11 +29,7 @@ public class MsgManager {
 			return "format de mdp incorrect";
 			
 		case 6:
-<<<<<<< Updated upstream
-			return "Adresse email existante !!";
-=======
 			return "Email ou mot de passe incorrect !!";
->>>>>>> Stashed changes
 			
 		case 7:
 			return "Information utilisateur correct";

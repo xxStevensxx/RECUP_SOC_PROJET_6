@@ -6,6 +6,7 @@ import com.pay.my.budy.model.User;
 
 public interface UserRepository {
 
+<<<<<<< Updated upstream
 	void create(User user);
 
 	User getById(int id);
@@ -19,5 +20,19 @@ public interface UserRepository {
 	void save(User user);
 
 	void delete(User user);
+=======
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer>{
+	
+
+	@Query(value = "SELECT * FROM Users  WHERE firstname = ?1", nativeQuery = true)
+	Optional<User> findUserWithName(String userName);
+	
+<<<<<<< Updated upstream
+=======
+	
+	//La suite a venir ...  
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 }

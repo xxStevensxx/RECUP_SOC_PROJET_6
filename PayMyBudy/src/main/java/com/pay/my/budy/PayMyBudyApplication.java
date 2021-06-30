@@ -15,8 +15,17 @@ public class PayMyBudyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PayMyBudyApplication.class, args);
 		
+<<<<<<< Updated upstream
 //		HibernateFactory factory = new HibernateFactory();
 //		factory.getSessionFactory(Params.HIBERNATECONFIG);
+=======
+<<<<<<< Updated upstream
+		HibernateFactory factory = new HibernateFactory();
+		factory.getSessionFactory(Params.HIBERNATECONFIG);
+=======
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	}
 
 }

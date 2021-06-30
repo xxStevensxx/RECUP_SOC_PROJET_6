@@ -9,6 +9,12 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+<<<<<<< Updated upstream
+=======
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+>>>>>>> Stashed changes
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +29,7 @@ import com.sun.istack.NotNull;
 
 @Component
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	
 
@@ -42,6 +48,7 @@ public class User {
 	}
 	
 	@Id
+<<<<<<< Updated upstream
 //	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idUser")
 	private long id;
@@ -55,6 +62,16 @@ public class User {
 //	@NotNull
 //	@NotBlank(message = "Name can't be blank")
 //	@Size(min = 2, max = 20, message = "Firstname must be between 2 and 20 caracteres")
+=======
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+
+
+	@Column(name="firstname")
+	private String firstName;
+	
+>>>>>>> Stashed changes
 	@Column(name="name")
 	private String name;
 	
@@ -65,9 +82,13 @@ public class User {
 	@Column(name="address")
 	private String address;
 	
+<<<<<<< Updated upstream
 	@NotNull
 	@Email(message = "invalid email")
 	@NotBlank(message = "Email can't be blank")
+=======
+	@Email
+>>>>>>> Stashed changes
 	@Column(name="email")
 	private String email;
 	
@@ -80,17 +101,26 @@ public class User {
 	@Column(name="moneyavailable")
 	private double moneyAvailable;
 	
+<<<<<<< Updated upstream
 	
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = Friends.class)
 	@JoinColumn(name = "idUser")
 	private Set<Integer> friends = new HashSet<Integer>();
+=======
+	@OneToMany(cascade = CascadeType.ALL, 
+							orphanRemoval = true,
+							fetch = FetchType.EAGER,
+							targetEntity = Relationships.class)
+	@JoinColumn(name = "friend")
+	private List<Relationships> friends = new ArrayList<Relationships>();
+>>>>>>> Stashed changes
 
 	
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -11,11 +11,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="bankaccount")
+@Table(name="bankaccounts")
 public class BankAccount {
 
 	@Id
+<<<<<<< Updated upstream
 	@Column(name = "idaccount")
+=======
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+>>>>>>> Stashed changes
 	private int idAccount;
 	
 	@Column(name = "Fk_iduser")

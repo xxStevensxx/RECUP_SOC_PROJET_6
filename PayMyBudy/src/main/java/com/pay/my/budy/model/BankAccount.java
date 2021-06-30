@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 public class BankAccount {
 
 	@Id
-	@Column(name = "idaccount")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int idAccount;

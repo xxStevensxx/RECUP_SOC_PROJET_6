@@ -10,52 +10,43 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.pay.my.budy.services.MsgManager;
 
-public class AppAuthProvider extends DaoAuthenticationProvider{
-	
+public class AppAuthProvider extends DaoAuthenticationProvider {
+
 	@Autowired
 	UserDetailsService userDetailsServices;
-	
+
 	@Autowired
 	MsgManager msgManager;
-	
-	
-	
+
 	@Override
 	public Authentication authenticate(Authentication authentication) {
-	
-		
+
 		UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) authentication;
-		
+
 		String name = auth.getName();
 		String password = auth.getCredentials().toString();
-		
-		
+
 		UserDetails userName = userDetailsServices.loadUserByUsername(name);
 		UserDetails userPswrd = userDetailsServices.loadUserByUsername(password);
 
-		
-		
 		if (userName == null) {
-			
+
 			throw new BadCredentialsException(msgManager.logMessage(6) + auth.getPrincipal());
 
 		}
-		
-		
-		if(userPswrd == null) {
-			
+
+		if (userPswrd == null) {
+
 			throw new BadCredentialsException(msgManager.logMessage(6) + auth.getPrincipal());
 
-			
 		}
-		
-				return new UsernamePasswordAuthenticationToken(userName, null, auth.getAuthorities());
+
+		return new UsernamePasswordAuthenticationToken(userName, null, auth.getAuthorities());
 	}
-	
-	
-    @Override
-    public boolean supports(Class<?> authentication) {
-        return true;
-    }
-    
+
+	@Override
+	public boolean supports(Class<?> authentication) {
+		return true;
+	}
+
 }

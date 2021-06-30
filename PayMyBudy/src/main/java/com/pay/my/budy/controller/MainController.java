@@ -1,51 +1,16 @@
 package com.pay.my.budy.controller;
 
-<<<<<<< Updated upstream
-import org.springframework.beans.factory.annotation.Autowired;
-=======
-<<<<<<< Updated upstream
-=======
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.pay.my.budy.model.User;
 
-<<<<<<< Updated upstream
-import com.pay.my.budy.repository.UserRepository;
-
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-@Controller
-public class MainController {
-
-	@Autowired
-	UserRepository userRepository;
-	
-	
-
-	@GetMapping(value = "/")
-	public String rootController() {
-
-		return "/layouts/index";
-
-	}
-
-	@GetMapping(value = "/home")
-	public String homeController() {
-<<<<<<< Updated upstream
-
-=======
-		
-=======
 import com.pay.my.budy.services.UserServices;
 
 @Controller
@@ -59,8 +24,7 @@ public class MainController {
 	@GetMapping(value = { "/", "/home" })
 	public String rootController() {
 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
 		return "/layouts/index";
 
 	}

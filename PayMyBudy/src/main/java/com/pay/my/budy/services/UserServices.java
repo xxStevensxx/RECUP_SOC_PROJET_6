@@ -1,54 +1,17 @@
 package com.pay.my.budy.services;
 
-<<<<<<< Updated upstream
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-=======
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.util.ArrayList;
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.validation.ObjectError;
-
 import com.pay.my.budy.config.SpringSecurityConfig;
->>>>>>> Stashed changes
 import com.pay.my.budy.model.User;
 import com.pay.my.budy.repository.UserRepository;
 
 @Service
-<<<<<<< Updated upstream
-public class UserServices implements UserDetailsService {
-	
-	@Autowired
-	MsgManager msgManager;
-	
-	private UserRepository userRepository;
-	
-	@Autowired
-	public UserServices(UserRepository userRepository) {
-		this.userRepository = userRepository;
-		// TODO Auto-generated constructor stub
-	}
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Objects.requireNonNull(username);
-		User user = userRepository.findUserWithName(username)
-					.orElseThrow(() -> new UsernameNotFoundException(msgManager.errMsgManger(6)));
-					
-			return (UserDetails) user;
-	}
-
-=======
 public class UserServices {
 
 	@Autowired
@@ -118,5 +81,4 @@ public class UserServices {
 	
 	}
 	
->>>>>>> Stashed changes
 }

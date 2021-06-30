@@ -22,8 +22,7 @@ public class Relationships {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private int id;
 	
 	@Column(name = "friend")
 	private int friend;
@@ -34,7 +33,7 @@ public class Relationships {
 	}
 
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

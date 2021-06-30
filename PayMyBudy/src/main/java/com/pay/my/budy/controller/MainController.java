@@ -1,11 +1,29 @@
 package com.pay.my.budy.controller;
 
+<<<<<<< Updated upstream
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+=======
+<<<<<<< Updated upstream
+=======
+import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.pay.my.budy.model.User;
+
+<<<<<<< Updated upstream
 import com.pay.my.budy.repository.UserRepository;
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 @Controller
 public class MainController {
 
@@ -23,7 +41,26 @@ public class MainController {
 
 	@GetMapping(value = "/home")
 	public String homeController() {
+<<<<<<< Updated upstream
 
+=======
+		
+=======
+import com.pay.my.budy.services.UserServices;
+
+@Controller
+public class MainController {
+
+	@Autowired
+	UserServices userServices;
+
+	// GET
+
+	@GetMapping(value = { "/", "/home" })
+	public String rootController() {
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 		return "/layouts/index";
 
 	}
@@ -53,6 +90,36 @@ public class MainController {
 	public String loginController(@ModelAttribute("FormLogin") User user, BindingResult result) {
 
 		return "/layouts/login";
+
+	}
+
+	@GetMapping(value = "/signUp")
+	public String signupController(@ModelAttribute("FormSignUp") User user, BindingResult result) {
+
+		return "/layouts/signUp";
+
+	}
+
+	// POST
+
+	@PostMapping(value = "/signUp")
+	public String postSignupForm(@ModelAttribute("FormSignUp")@Valid User user, BindingResult result) {
+
+		if (userServices.check(user) != null) {
+			
+			result.addError(userServices.check(user));
+
+		}
+		
+		if (!result.hasErrors()) {
+
+			userServices.addUser(user);
+			
+				return "/layouts/loginSuccess";
+
+		}
+		
+				return "/layouts/signUp";
 
 	}
 

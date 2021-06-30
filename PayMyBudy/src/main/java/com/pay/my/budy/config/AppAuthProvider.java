@@ -37,13 +37,15 @@ public class AppAuthProvider extends DaoAuthenticationProvider{
 		
 		if (userName == null) {
 			
-			throw new BadCredentialsException(msgManager.errMsgManger(7) + auth.getPrincipal());
+			throw new BadCredentialsException(msgManager.logMessage(6) + auth.getPrincipal());
+
 		}
 		
 		
 		if(userPswrd == null) {
 			
-			throw new BadCredentialsException(msgManager.errMsgManger(7) + auth.getPrincipal());
+			throw new BadCredentialsException(msgManager.logMessage(6) + auth.getPrincipal());
+
 			
 		}
 		

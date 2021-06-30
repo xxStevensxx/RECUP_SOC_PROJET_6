@@ -7,8 +7,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -21,7 +24,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	
 
@@ -38,15 +41,15 @@ public class User {
 		this.friends = friends;
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
 
+  @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
 
-	@Column(name="firstName")
+	@Column(name="firstname")
 	private String firstName;
 	
-	@NotBlank(message = "Name can't be blank")
 	@Column(name="name")
 	private String name;
 	
@@ -56,8 +59,7 @@ public class User {
 	@Column(name="address")
 	private String address;
 	
-	@Email(message = "invalid email")
-	@NotBlank(message = "Email can't be blank")
+	@Email
 	@Column(name="email")
 	private String email;
 	
@@ -66,17 +68,18 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Relationships.class)
+	@OneToMany(cascade = CascadeType.ALL, 
+							orphanRemoval = true,
+							fetch = FetchType.EAGER,
+							targetEntity = Relationships.class)
 	@JoinColumn(name = "friend")
 	private List<Relationships> friends = new ArrayList<Relationships>();
 
-	
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

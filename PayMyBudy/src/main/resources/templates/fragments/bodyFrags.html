@@ -77,12 +77,20 @@
     <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
   </div>
 <div class="btn-container">
-    <button class="btn btn-primary" type="submit">Login</button>
+    <button class="btn btn-primary" type="submit">sign Up</button>
 </div>
   </div>
 </div>
 </form>
 
+
+<!-- Sign-Up Success -->
+<div class="container" th:fragment="signupsuccessfragment">
+	<div id="loginSucces"  align="center">
+	<div class="alert alert-success" role="alert">Inscription fini! bienvenue:   <span class="fw-bold" th:text=${session.Email}></span> </div>
+		<div class="alert alert-info" role="alert">Pensez à ajouter vos infos dans votre profil</div>
+	</div>
+</div>
 
 
 <!-- Login  -->
@@ -117,41 +125,6 @@
   </div>
 </div>
 </form>
-
-
-<!-- LoginBis  -->
-<form th:fragment="loginfragmentbis" method="post">
-<div class="container">
-<div class="formBox">
-<div>
-<h2 id="pmBudy2">Pay My Budy</h2>
-</div>
-<div id="email" class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input oninput="this.value = this.value.toLowerCase()" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-   <div class="alert alert-danger" role="alert" ></div>
-</div>
-  <div id="psw" class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input  type="password" class="form-control" id="exampleInputPassword1">
-    <div class="alert alert-danger" role="alert" ></div>
-<!--   </div>
-       <div align="center"  class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('global')}" th:each="err : ${#fields.errors('global')}" th:text="${err}"></div>  
-  <div class="form-check"> -->
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">Remember me</label>
-</div>
-<div class="btn-container">
-    <button class="btn btn-primary" type="submit">Login</button>
-</div>
-    <div>
-    	<p class="fw-bold">New on pay My budy ? </p>
-          <a class="nav-link" href="/signUp">Sign-Up</a>
-    </div>
-  </div>
-</div>
-</form>
-
     
 
 <!-- Login Succes -->

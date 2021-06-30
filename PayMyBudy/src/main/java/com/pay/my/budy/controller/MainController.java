@@ -1,6 +1,7 @@
 package com.pay.my.budy.controller;
 
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.pay.my.budy.model.User;
 
 import com.pay.my.budy.services.UserServices;
@@ -21,6 +24,14 @@ public class MainController {
 
 	// GET
 
+	@RolesAllowed("admin")
+	@RequestMapping(value = "/admin")
+	public String getAdmin() {
+		
+		return "Welcome, Admin"; 
+	}
+	
+	
 	@GetMapping(value = { "/", "/home" })
 	public String rootController() {
 
@@ -56,6 +67,13 @@ public class MainController {
 		return "/layouts/login";
 
 	}
+	
+	@GetMapping(value = "/logout")
+	public String logoutController() {
+
+		return "/layouts/logout";
+
+	}
 
 	@GetMapping(value = "/signUp")
 	public String signupController(@ModelAttribute("FormSignUp") User user, BindingResult result) {
@@ -65,13 +83,35 @@ public class MainController {
 	}
 
 	// POST
+	
+	
+	@PostMapping(value = "/login")
+	public String performLogin(@ModelAttribute("FormLogin")@Valid User user, BindingResult result) {
+		
+	if (userServices.signIn(user) != null) {
+			
+			result.addError(userServices.signIn(user));
+
+		}
+		
+		if (!result.hasErrors()) {
+			
+				return "/layouts/loginSuccess";
+
+		}
+		
+				return "/layouts/login";
+
+	}
+	
+	
 
 	@PostMapping(value = "/signUp")
-	public String postSignupForm(@ModelAttribute("FormSignUp")@Valid User user, BindingResult result) {
+	public String performSignup(@ModelAttribute("FormSignUp")@Valid User user, BindingResult result) {
 
-		if (userServices.check(user) != null) {
+		if (userServices.signUp(user) != null) {
 			
-			result.addError(userServices.check(user));
+			result.addError(userServices.signUp(user));
 
 		}
 		
@@ -79,7 +119,7 @@ public class MainController {
 
 			userServices.addUser(user);
 			
-				return "/layouts/loginSuccess";
+				return "/layouts/SignUpSuccess";
 
 		}
 		
